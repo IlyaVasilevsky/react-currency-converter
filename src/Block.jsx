@@ -2,7 +2,7 @@ import React from 'react';
 
 const defaultCurrencies = ['RUB', 'USD', 'EUR', 'GBP']
 
-export const Block = ({ value, currency, onChangeValue, onChangeCurrency }) => (
+export const Block = ({ value, currency, onChangeValue, onChangeCurrency, clear }) => (
   <div className="block">
     <ul className="currencies">
       {defaultCurrencies.map((cur) => (
@@ -26,5 +26,6 @@ export const Block = ({ value, currency, onChangeValue, onChangeCurrency }) => (
       type="number"
       placeholder={0}
     />
+    <button onClick={clear} >CLEAR</button>
   </div>
 )

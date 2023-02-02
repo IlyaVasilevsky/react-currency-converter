@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Block } from './Block';
 import './index.scss';
 
@@ -16,6 +16,7 @@ function App() {
     .then(res => res.json())
     .then(json => {
       setRates(json.Valute)
+      console.log(rates)
     })
   }, [])
 
@@ -69,6 +70,20 @@ function App() {
     setToPrice(value)
   }
 
+  // React.useEffect(() => {
+  //   onChangeFromPrice(fromPrice)
+  // }, [fromCurrency,  fromPrice])
+
+  // React.useEffect(() => {
+  //   onChangeToPrice(toPrice)
+  // }, [toCurrency, toPrice])
+
+
+  const clear = () => {
+    setFromPrice(0)
+    setToPrice(0)
+  }
+
   return (
     <div className="App">
       <Block 
@@ -76,12 +91,14 @@ function App() {
         currency={fromCurrency} 
         onChangeCurrency={setFromCurrency} 
         onChangeValue={onChangeFromPrice} 
+        clear={clear}
       />
       <Block 
         value={toPrice} 
         currency={toCurrency} 
         onChangeCurrency={setToCurrency} 
         onChangeValue={onChangeToPrice} 
+        clear={clear}
       />
     </div> 
   )
